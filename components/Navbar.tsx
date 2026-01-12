@@ -25,6 +25,7 @@ import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 const routes = [
+    { label: "Platform", href: "/platform" },
     {
         label: "Company",
         children: [
@@ -33,19 +34,19 @@ const routes = [
             { label: "Careers", href: "/careers" },
         ],
     },
-    {
-        label: "Solutions",
-        children: [
-            { label: "Solutions", href: "/solutions" },
-            { label: "Platform", href: "/platform" },
-        ],
-    },
+    // {
+    //     label: "Solutions",
+    //     children: [
+    //     ],
+    // },
+    { label: "Solutions", href: "/solutions" },
     { label: "Pricing", href: "/pricing" },
     { label: "Contact Us", href: "/contact-us" },
 ];
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = React.useState(false);
+    const [isOpen, setIsOpen] = React.useState(false);
     const pathname = usePathname();
 
     React.useEffect(() => {
@@ -68,7 +69,7 @@ export function Navbar() {
             <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <Link href="/" className="hover:opacity-90 transition-opacity">
                     {/* <Logo /> */}
-                    <Image src="/logo/darklogo2.png" alt="Flowmaster Logo" width={200} height={200} />
+                    <Image src="/logo/newLogo.png" alt="Flowmaster Logo" width={220} height={220} />
                 </Link>
 
                 {/* Desktop Navigation */}
@@ -83,7 +84,7 @@ export function Navbar() {
                                                 {route.label}
                                             </NavigationMenuTrigger>
                                             <NavigationMenuContent className="bg-navy-900 border-slate-700">
-                                                <ul className="grid w-[400px] cursor-pointer gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                                                <ul className="grid w-[250px] cursor-pointer gap-2 p-4">
                                                     {route.children.map((child) => (
                                                         <li key={child.href}>
                                                             <NavigationMenuLink asChild>
@@ -97,7 +98,7 @@ export function Navbar() {
                                                                     <div className={cn("text-sm font-medium leading-none text-slate-200", pathname === child.href && "text-white")}>{child.label}</div>
                                                                     <p className="line-clamp-2 text-sm leading-snug text-slate-400">
                                                                         {/* Placeholder description logic could go here if we had it */}
-                                                                        Explore our {child.label} offerings.
+                                                                        Explore our {child.label}
                                                                     </p>
                                                                 </Link>
                                                             </NavigationMenuLink>
@@ -124,14 +125,14 @@ export function Navbar() {
                         </NavigationMenuList>
                     </NavigationMenu>
 
-                    <Button className="bg-white text-navy-900 font-bold hover:bg-slate-100 shadow-lg ml-4">
+                    {/* <Button className="bg-white text-navy-900 font-bold hover:bg-slate-100 shadow-lg ml-4">
                         Request Briefing
-                    </Button>
+                    </Button> */}
                 </div>
 
                 {/* Mobile Navigation */}
                 <div className="md:hidden">
-                    <Sheet>
+                    <Sheet open={isOpen} onOpenChange={setIsOpen}>
                         <SheetTrigger asChild>
                             <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
                                 <Menu className="w-6 h-6" />
@@ -151,6 +152,7 @@ export function Navbar() {
                                                             <Link
                                                                 key={child.href}
                                                                 href={child.href}
+                                                                onClick={() => setIsOpen(false)}
                                                                 className="text-slate-300 hover:text-white text-sm"
                                                             >
                                                                 {child.label}
@@ -164,6 +166,7 @@ export function Navbar() {
                                             <Link
                                                 key={route.href}
                                                 href={route.href!}
+                                                onClick={() => setIsOpen(false)}
                                                 className={cn(
                                                     "text-lg font-medium transition-colors hover:text-primary",
                                                     pathname === route.href ? "text-primary" : "text-slate-200"

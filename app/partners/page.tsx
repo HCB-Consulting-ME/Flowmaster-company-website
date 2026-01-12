@@ -45,7 +45,7 @@ export default function PartnersPage() {
                         </Link>
                     </motion.div>
 
-                    <motion.div
+                    {/* <motion.div
                         className="relative max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-slate-700/50 mt-16 glow-effect"
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ export default function PartnersPage() {
                             className="w-full h-[400px] object-cover"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdYYyXxEwnig9BlXlwH_VRz6jhmAoBDqGn4A6ZDHaMIfqJ9pIblvBbOpXlKDcNJZi2-pr8Ox0lREfS1qkOSML2nAmzDgQjjtsvipTZfQcX-EvcdNaV4cY4q5jHLyg_dZMPUR_YpmUvfMZWms6MQsVF6agFShEstNNTIPzoCCQNdHYQGXj1kMZZVdq44xb5O8WS4XicVBKE5J8YMlxi6jeWFc4hWyYBRpMh4Wuxtvq0v3z2YsIOXDaMLH1ZWoxbH-LdhG-CN2-YCFKx"
                         />
-                    </motion.div>
+                    </motion.div> */}
                 </div>
             </section>
 
@@ -136,21 +136,7 @@ export default function PartnersPage() {
                 </div>
             </section>
 
-            {/* Final CTA */}
-            {/* <section className="py-24 px-6 bg-blue-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
-                <div className="max-w-4xl mx-auto text-center text-white relative z-10">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-8">Ready to Transform Enterprise AI?</h2>
-                    <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-                        Become a catalyst for change. Let's build the future of autonomous business operations together.
-                    </p>
-                    <Link href="/contact-us">
-                        <Button className="bg-white text-blue-600 hover:bg-slate-100 font-bold text-lg h-14 px-10 rounded-full shadow-xl transition-transform hover:scale-105">
-                            Join the Network
-                        </Button>
-                    </Link>
-                </div>
-            </section> */}
+
         </div>
     );
 }

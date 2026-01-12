@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 export default function ContactUsPage() {
     return (
         <div className="flex flex-col min-h-screen">
-            <header className="bg-navy-900 text-white pt-20 pb-24 px-8 text-center border-b border-white/5 relative overflow-hidden">
+            <header className="bg-navy-900 text-white pt-20 pb-32 px-8 text-center border-b border-white/5 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#1e293b_0%,#020617_100%)]"></div>
                 <div className="relative z-10">
                     <motion.h1
@@ -32,7 +32,7 @@ export default function ContactUsPage() {
                 </div>
             </header>
 
-            <main className="max-w-7xl mx-auto px-8 -mt-12 mb-24 grid md:grid-cols-2 gap-8 w-full z-10 relative">
+            <main className="max-w-7xl mx-auto px-8 -mt-16 mb-24 grid md:grid-cols-2 gap-8 w-full z-10 relative">
                 {/* Form */}
                 <motion.section
                     className="bg-card text-card-foreground p-8 md:p-12 rounded-xl shadow-xl border border-border"

@@ -30,7 +30,7 @@ export default function CompanyPage() {
                         Learn about the people, values, and vision behind FLOWMASTER.
                     </motion.p>
                 </div>
-                <div className="max-w-6xl mx-auto px-4 mt-16 -mb-64 relative z-20">
+                {/* <div className="max-w-6xl mx-auto px-4 mt-16 -mb-64 relative z-20">
                     <motion.div
                         className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 glow-effect"
                         initial={{ opacity: 0, y: 40 }}
@@ -53,7 +53,7 @@ export default function CompanyPage() {
                             </motion.div>
                         </div>
                     </motion.div>
-                </div>
+                </div> */}
             </section>
 
             <div className="pt-20 pb-20 bg-background transition-colors duration-300">
@@ -72,9 +72,9 @@ export default function CompanyPage() {
                             </h2>
                             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-6">
                                 {[
-                                    { name: "Bran Games", role: "CEO & Founder", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDg3ExlxiClv98p_0YGRHWA6gdr3JGONP3e2KPG4OJiEAx_kEiDDyE2jc3fmYNR8XgRyFlpA2PiiuIz757iXpZJvn5X6X-5JoWeIIhJxzXcrbWyKVZg3fX3x0LW0ek5tZCDB2F9AaPvOXZXw-qxQqnTiAApWdBZCpeWiOXc4DUDVze_H0bX9z2UMuYVkBLMEPdrMQi1oU65P1oxM_RyoCrD230Kll7thAUTLpmY5jP2r0hwBvs1J0fRr9GPUQKpAZ8ejGOfhBpSqbH5" },
-                                    { name: "Laur Cho", role: "CTO", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCb8MNF9Y2PNt61iIITJLpQLvvR4jB5JEPPmXRCUM5eFq_XNua3lCtnAkAP5bm59jI3QP6-d419PFDv23QeCgdllgzyxSoiqNjgoIiU6j3tTFgG5Z_bmutypv4zUYlPJgQ7jpf6z51kJ4DnMfkhqIHUk33JURduTqtvvgNtFPlFolQ7_MC5GXJ-rUlf-egc-GQRIV5szwyb7ld1TfPw_uOJ4ANfWkZpK_aStYXEiO7AjE8yLUxWIXWnwD50Ai-zmykdtewxFiZ7CGtC" },
-                                    { name: "Elna Coo", role: "COO", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDrRnS1qaA2ebt0l-hyr_8e1AgEWFGcfUG28ux1BSN8D1x6PgXNG0m6AZeHI457fZVMmM9BGHJfVSSKAJOIYrHWOSNsN7XMwSBOviEEYE3ED-JM5NkDkzrLeLTQZI8xWfSLqa1NFGRcEtFkrfzprMcLJ_hIR1Hmlf6mP6oAOtltF20EZwZJ5nFbxQ62CGNspTGxJZjkWfkicJxGJ8M2lTfRmHqva8ZCM9yLa2ENurktMg2qDzyx_3GKZNaddpMVeu6PWR6ti2xa7oDT" }
+                                    { name: "Benjamin Hippler", role: "CEO & Founder", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCb8MNF9Y2PNt61iIITJLpQLvvR4jB5JEPPmXRCUM5eFq_XNua3lCtnAkAP5bm59jI3QP6-d419PFDv23QeCgdllgzyxSoiqNjgoIiU6j3tTFgG5Z_bmutypv4zUYlPJgQ7jpf6z51kJ4DnMfkhqIHUk33JURduTqtvvgNtFPlFolQ7_MC5GXJ-rUlf-egc-GQRIV5szwyb7ld1TfPw_uOJ4ANfWkZpK_aStYXEiO7AjE8yLUxWIXWnwD50Ai-zmykdtewxFiZ7CGtC" },
+                                    { name: "Muhammad Irtiza", role: "Co-Founder", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDg3ExlxiClv98p_0YGRHWA6gdr3JGONP3e2KPG4OJiEAx_kEiDDyE2jc3fmYNR8XgRyFlpA2PiiuIz757iXpZJvn5X6X-5JoWeIIhJxzXcrbWyKVZg3fX3x0LW0ek5tZCDB2F9AaPvOXZXw-qxQqnTiAApWdBZCpeWiOXc4DUDVze_H0bX9z2UMuYVkBLMEPdrMQi1oU65P1oxM_RyoCrD230Kll7thAUTLpmY5jP2r0hwBvs1J0fRr9GPUQKpAZ8ejGOfhBpSqbH5" },
+                                    // { name: "Elna Coo", role: "COO", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDrRnS1qaA2ebt0l-hyr_8e1AgEWFGcfUG28ux1BSN8D1x6PgXNG0m6AZeHI457fZVMmM9BGHJfVSSKAJOIYrHWOSNsN7XMwSBOviEEYE3ED-JM5NkDkzrLeLTQZI8xWfSLqa1NFGRcEtFkrfzprMcLJ_hIR1Hmlf6mP6oAOtltF20EZwZJ5nFbxQ62CGNspTGxJZjkWfkicJxGJ8M2lTfRmHqva8ZCM9yLa2ENurktMg2qDzyx_3GKZNaddpMVeu6PWR6ti2xa7oDT" }
                                 ].map((leader, i) => (
                                     <motion.div
                                         key={leader.name}
@@ -104,7 +104,7 @@ export default function CompanyPage() {
                         >
                             <h2 className="text-2xl font-bold mb-8 text-foreground">Our Story & Milestones</h2>
                             <div className="space-y-8 relative">
-                                <div className="flex justify-between items-center mb-10 relative">
+                                {/* <div className="flex justify-between items-center mb-10 relative">
                                     <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-700 -translate-y-1/2 -z-10"></div>
                                     {[BarChart, Briefcase, Users, Flag].map((Icon, idx) => (
                                         <motion.div
@@ -115,7 +115,7 @@ export default function CompanyPage() {
                                             <Icon className="w-5 h-5" />
                                         </motion.div>
                                     ))}
-                                </div>
+                                </div> */}
                                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                                     Our FlowMaster AI journey began with a vision to redefine enterprise efficiency. From our
                                     humble beginnings in research labs to becoming a global leader in AI orchestration, we've
