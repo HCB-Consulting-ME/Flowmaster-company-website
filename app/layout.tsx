@@ -35,9 +35,9 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <div className="fixed cursor-pointer bottom-6 right-6 z-50">
+        {/* <div className="fixed cursor-pointer bottom-6 right-6 z-50">
           <Contact />
-        </div>
+        </div> */}
       </body>
     </html>
   );

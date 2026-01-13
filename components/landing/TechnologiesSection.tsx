@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const TechnologyItem = ({ name, short }: { name: string, short?: string }) => (
     <div className="flex items-center justify-center px-4 py-2 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
@@ -39,8 +40,11 @@ const TechnologiesSection = () => {
                 </div>
 
                 {/* Tech Grid */}
-                <div className="flex flex-wrap justify-center gap-x-8 gap-y-8 md:justify-between items-center">
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 w-full items-center justify-items-center">
+                <div className="flex flex-wrap justify-center gap-x-8 gap-y-8 justify-between items-center">
+                    <Image src='/technologies/tech1.png' alt="Technology 1" width={1000} height={1000} />
+                    <Image src='/technologies/tech2.png' alt="Technology 2" width={1000} height={1000} />
+
+                    {/* <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 w-full items-center justify-items-center">
                         {technologies.map((tech, index) => (
                             <motion.div
                                 key={index}
@@ -53,7 +57,7 @@ const TechnologiesSection = () => {
                                 <TechnologyItem name={tech} />
                             </motion.div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>

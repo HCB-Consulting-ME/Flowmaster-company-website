@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="mx-auto max-w-7xl px-6 py-16 relative z-10">
 
                 {/* Branding Header Section */}
-                <div className="flex flex-col md:flex-row items-center gap-6">
+                {/* <div className="flex flex-col md:flex-row items-center gap-6">
                     <Image
                         src="/logo/newLogo.png"
                         alt="Company Logo"
@@ -20,24 +20,23 @@ export default function Footer() {
                         priority
                         className="object-contain"
                     />
-                    {/* Vertical Divider (Hidden on Mobile) */}
                     <div className="hidden md:block h-10 w-[1px] bg-white/30" />
                     <h2 className="text-xl md:text-2xl font-medium tracking-tight text-center md:text-left">
                         The Operating System for AI Native Enterprises
                     </h2>
-                </div>
+                </div> */}
 
                 {/* Divider */}
-                <Separator className="my-5 mb-10 bg-white/20" />
+                {/* <Separator className="my-5 mb-10 bg-white/20" /> */}
 
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
 
                     {/* Description */}
                     <div className="space-y-4">
-                        <h4 className="text-sm font-semibold text-white uppercase tracking-wider">
+                        <h4 className="text-lg font-semibold text-white uppercase">
                             About FlowMaster
                         </h4>
-                        <p className="text-sm leading-relaxed text-white/80">
+                        <p className="text-sm text-white/80">
                             Building intelligent platforms that help teams automate,
                             scale, and move faster with confidence.
                         </p>
