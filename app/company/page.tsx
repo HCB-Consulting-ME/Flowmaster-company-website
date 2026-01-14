@@ -72,9 +72,9 @@ export default function CompanyPage() {
                             </h2>
                             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-6">
                                 {[
-                                    { name: "Benjamin Hippler", role: "CEO & Founder", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCb8MNF9Y2PNt61iIITJLpQLvvR4jB5JEPPmXRCUM5eFq_XNua3lCtnAkAP5bm59jI3QP6-d419PFDv23QeCgdllgzyxSoiqNjgoIiU6j3tTFgG5Z_bmutypv4zUYlPJgQ7jpf6z51kJ4DnMfkhqIHUk33JURduTqtvvgNtFPlFolQ7_MC5GXJ-rUlf-egc-GQRIV5szwyb7ld1TfPw_uOJ4ANfWkZpK_aStYXEiO7AjE8yLUxWIXWnwD50Ai-zmykdtewxFiZ7CGtC" },
-                                    { name: "Muhammad Irtiza", role: "Co-Founder", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDg3ExlxiClv98p_0YGRHWA6gdr3JGONP3e2KPG4OJiEAx_kEiDDyE2jc3fmYNR8XgRyFlpA2PiiuIz757iXpZJvn5X6X-5JoWeIIhJxzXcrbWyKVZg3fX3x0LW0ek5tZCDB2F9AaPvOXZXw-qxQqnTiAApWdBZCpeWiOXc4DUDVze_H0bX9z2UMuYVkBLMEPdrMQi1oU65P1oxM_RyoCrD230Kll7thAUTLpmY5jP2r0hwBvs1J0fRr9GPUQKpAZ8ejGOfhBpSqbH5" },
-                                    // { name: "Elna Coo", role: "COO", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDrRnS1qaA2ebt0l-hyr_8e1AgEWFGcfUG28ux1BSN8D1x6PgXNG0m6AZeHI457fZVMmM9BGHJfVSSKAJOIYrHWOSNsN7XMwSBOviEEYE3ED-JM5NkDkzrLeLTQZI8xWfSLqa1NFGRcEtFkrfzprMcLJ_hIR1Hmlf6mP6oAOtltF20EZwZJ5nFbxQ62CGNspTGxJZjkWfkicJxGJ8M2lTfRmHqva8ZCM9yLa2ENurktMg2qDzyx_3GKZNaddpMVeu6PWR6ti2xa7oDT" }
+                                    { name: "Benjamin Hippler", role: "CEO & Founder", img: '/Company/ben.png' },
+                                    { name: "Muhammad Irtiza", role: "Co-Founder", img: '/Company/irtiza.png' },
+
                                 ].map((leader, i) => (
                                     <motion.div
                                         key={leader.name}

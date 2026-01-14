@@ -91,7 +91,7 @@ export default function PartnersPage() {
                                 transition={{ delay: idx * 0.1 }}
                                 viewport={{ once: true }}
                             >
-                                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${item.color} group-hover:scale-110 transition-transform`}>
+                                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform`}>
                                     <item.icon className="w-7 h-7" />
                                 </div>
                                 <h3 className="text-xl font-bold mb-3 text-foreground">{item.title}</h3>
@@ -103,7 +103,7 @@ export default function PartnersPage() {
             </section>
 
             {/* Partner Ecosystem */}
-            <section className="py-24 px-6 bg-slate-50 dark:bg-slate-900/30 border-t border-border">
+            {/* <section className="py-24 px-6 bg-slate-50 dark:bg-slate-900/30 border-t border-border">
                 <div className="max-w-7xl mx-auto text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -134,7 +134,7 @@ export default function PartnersPage() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
 
         </div>

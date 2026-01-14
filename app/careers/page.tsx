@@ -1,10 +1,44 @@
-"use client";
-
+'use client'
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Lightbulb, Users, Zap, TrendingUp, MapPin, Briefcase, Mail } from "lucide-react";
+import { Lightbulb, Users, Zap, TrendingUp, MapPin, Briefcase, Mail, Upload } from "lucide-react";
 import { motion } from "framer-motion";
+import { ApplyModal } from "./_components/ApplyModal";
+
+const jobs = [
+    {
+        title: "AI Engineering Architect",
+        dept: "Product & Engineering",
+        location: "Karachi, Pakistan",
+        description: "The AI Engineering Architect designs and builds the AI-native SDLC toolset used by software developers. The role owns the full software lifecycle — from requirements and solution design through coding, testing, deployment, and operation. We develop with Claude Code.",
+        scope: [
+            "Requirements intake and decomposition",
+            "Architecture and design workflows",
+            "AI-assisted coding, testing, and review",
+            "CI/CD, deployment, and application operations",
+            "Build and maintain the developer toolset (Claude Code workflows, MCPs, Skills, Hooks, slash-commands) and prompts",
+            "E2E integration and automation of the SDLC across stages into a single, traceable workflow",
+            "Define and enforce standards through tooling, not documentation",
+            "Ensure adoption of the toolset (incl training and communication)"
+        ],
+        skills: [
+            "Expert level experience with Claude Code (non-negotiable), MCPs, Skills, prompting",
+            "End-to-End understanding of the SDLC from requirements to maintenance and beyond",
+            "Solid experience in SW-Architecture, Testing and CI/CD"
+        ]
+    },
+
+];
 
 export default function CareersPage() {
+    const [selectedJob, setSelectedJob] = useState<typeof jobs[0] | null>(null);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+    const handleApplyClick = (job: typeof jobs[0]) => {
+        setSelectedJob(job);
+        setIsDialogOpen(true);
+    };
+
     return (
         <div className="flex flex-col min-h-screen">
             {/* Hero */}
@@ -90,8 +124,8 @@ export default function CareersPage() {
                             <h3 className="text-2xl font-bold text-foreground mb-6">{section.title}</h3>
                             <ul className="space-y-4">
                                 {section.items.map((item, idx) => (
-                                    <li key={idx} className="flex items-start">
-                                        <span className="mr-2 text-blue-500 text-sm mt-1.5">●</span>
+                                    <li key={idx} className="flex items-center">
+                                        <span className="mr-2 text-blue-500 text-sm">●</span>
                                         <span className="text-slate-600 dark:text-slate-300">{item}</span>
                                     </li>
                                 ))}
@@ -113,11 +147,7 @@ export default function CareersPage() {
                         Open Positions
                     </motion.h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[
-                            { title: "AI Engineer", dept: "Product & Engineering" },
-                            { title: "Product Manager", dept: "Strategy & Operations" },
-                            { title: "Sales Director", dept: "Growth & Partnerships" },
-                        ].map((job, i) => (
+                        {jobs.map((job, i) => (
                             <motion.div
                                 key={job.title}
                                 className="bg-card text-card-foreground p-8 rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow"
@@ -131,14 +161,17 @@ export default function CareersPage() {
                                 <div className="space-y-3 mb-8">
                                     <div className="flex items-center text-slate-500 dark:text-slate-400">
                                         <MapPin className="w-5 h-5 mr-2" />
-                                        <span>Dubai, UAE</span>
+                                        <span>{job.location}</span>
                                     </div>
                                     <div className="flex items-center text-slate-500 dark:text-slate-400">
                                         <Briefcase className="w-5 h-5 mr-2" />
                                         <span>{job.dept}</span>
                                     </div>
                                 </div>
-                                <Button className="w-full bg-navy-900 text-white font-semibold hover:bg-navy-800">
+                                <Button
+                                    className="w-full bg-navy-900 text-white font-semibold hover:bg-navy-800"
+                                    onClick={() => handleApplyClick(job)}
+                                >
                                     Apply Now
                                 </Button>
                             </motion.div>
@@ -146,6 +179,14 @@ export default function CareersPage() {
                     </div>
                 </div>
             </section>
+
+            {isDialogOpen && (
+                <ApplyModal
+                    job={selectedJob}
+                    open={isDialogOpen}
+                    onOpenChange={setIsDialogOpen}
+                />
+            )}
 
             {/* CTA */}
             <section className="bg-navy-900 py-24 px-6 text-center text-white">
@@ -162,12 +203,12 @@ export default function CareersPage() {
                         of enterprise AI.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Button className="bg-white text-navy-900 px-10 py-6 h-auto text-lg hover:bg-slate-100 font-bold">
+                        <Button onClick={() => window.location.href = "/contact-us"} className="bg-white text-navy-900 px-10 py-6 h-auto text-lg hover:bg-slate-100 font-bold">
                             Send a Note <Mail className="ml-2 w-5 h-5" />
                         </Button>
-                        <Button variant="outline" className="border-white/30 text-white px-10 py-6 h-auto text-lg hover:bg-white/10 hover:text-white font-bold bg-transparent">
+                        {/* <Button variant="outline" className="border-white/30 text-white px-10 py-6 h-auto text-lg hover:bg-white/10 hover:text-white font-bold bg-transparent">
                             Join Talent Network
-                        </Button>
+                        </Button> */}
                     </div>
                 </motion.div>
             </section>

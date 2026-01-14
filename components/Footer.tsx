@@ -101,8 +101,12 @@ export default function Footer() {
                                     Contact Us
                                 </Link>
                             </li>
-                            <li>support@yourcompany.com</li>
-                            <li>© {new Date().getFullYear()} FlowMaster AI</li>
+                            <li>
+                                <Link href="mailto:contact@flow-master.ai" className="hover:text-white transition-colors">
+                                    contact@flow-master.ai
+                                </Link>
+                            </li>
+                            <li>© {new Date().getFullYear()} FlowMaster FZC LLC</li>
                         </ul>
                     </div>
                 </div>

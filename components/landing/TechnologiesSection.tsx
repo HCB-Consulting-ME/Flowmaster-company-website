@@ -33,7 +33,7 @@ const TechnologiesSection = () => {
                 {/* Header with lines */}
                 <div className="flex items-center justify-center mb-12">
                     <div className="h-[1px] bg-slate-200 dark:bg-slate-700 w-12 md:w-32 lg:w-48"></div>
-                    <span className="px-6 text-sm md:text-base font-bold tracking-[0.2em] text-navy-900 uppercase">
+                    <span className="px-6 text-sm md:text-base font-bold text-navy-900 uppercase">
                         Technologies
                     </span>
                     <div className="h-[1px] bg-slate-200 dark:bg-slate-700 w-12 md:w-32 lg:w-48"></div>

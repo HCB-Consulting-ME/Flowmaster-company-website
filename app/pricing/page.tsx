@@ -172,7 +172,7 @@ export default function PricingPage() {
                         <span className="flex items-center gap-2 font-medium">Enterprise Grade Security</span>
                         <span className="flex items-center gap-2 font-medium">24/7 Priority Support</span>
                     </div>
-                    <p className="mt-10 opacity-50 text-xs">Last Updated: 09/01/2026</p>
+                    {/* <p className="mt-10 opacity-50 text-xs">Last Updated: 09/01/2026</p> */}
                 </footer>
             </main>
         </div>

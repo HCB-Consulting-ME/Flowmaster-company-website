@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Lock, FileKey, TrendingUp, MessageSquare, Calendar } from "lucide-react";
-import { ManagerAppIllustration, FeatureIllustration, SecurityIllustration, OptimizationIllustration } from "@/components/platform/PlatformGraphics";
+import { ManagerAppIllustration, FeatureIllustration, SecurityIllustration, OptimizationIllustration, PlatformHeaderGraphic, GovernanceGraphic } from "@/components/platform/PlatformGraphics";
 import { motion } from "framer-motion";
 import FlowMasterTimeline from "@/components/platform/Timeline";
 
@@ -72,7 +72,8 @@ export default function PlatformPage() {
                             </ul>
                         </motion.div>
                         <div className="order-1 lg:order-2">
-                            <FeatureIllustration />
+                            {/* <FeatureIllustration /> */}
+                            <GovernanceGraphic />
                         </div>
                     </div>
                 </div>

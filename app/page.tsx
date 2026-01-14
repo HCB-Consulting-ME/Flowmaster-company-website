@@ -16,7 +16,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#1e293b_0%,#020617_100%)]"></div>
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            className="space-y-8 z-10"
+            className="space-y-8 z-10 flex flex-col items-center lg:items-start text-center lg:text-left"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -31,16 +31,16 @@ export default function Home() {
               <span className="text-blue-500">AI Native Enterprises</span><br />
             </motion.h1>
             <motion.p
-              className="text-lg text-slate-300 max-w-lg leading-relaxed"
+              className="text-lg text-slate-300 max-w-lg leading-relaxed mx-auto lg:mx-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               FlowMaster enables enterprises to execute existing business processes using AI. ​It provides a single end-to-end orchestration and execution layer across current systems and data landscapes, with human oversight where required.
             </motion.p>
-            
+
             <motion.div
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -50,11 +50,11 @@ export default function Home() {
                   See the Platform in Action
                 </Button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button variant="outline" className="border-2 border-white/40 text-white bg-transparent font-bold text-base h-14 px-8 hover:bg-white hover:border-white transition-all rounded-md">
                   Request Demo
                 </Button>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
           </motion.div>
           <motion.div
@@ -86,7 +86,7 @@ export default function Home() {
           >
             Why FlowMaster?
           </motion.h2>
-         <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex flex-col md:flex-row gap-8">
 
             {/* Card 1: The Challenge */}
             <motion.div
@@ -172,12 +172,12 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            {/* <h3 className="text-3xl md:text-4xl font-bold text-navy-900 dark:text-white mb-6" >
-              See FlowMaster in Action
-            </h3> */}
-            {/* <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto">
-              Watch how our autonomous agents orchestrate complex enterprise workflows securely and efficiently.
-            </p> */}
+            <h3 className="text-3xl md:text-4xl font-bold text-navy-900 dark:text-white mb-6" >
+              See How FlowMaster Streamlines Your Workflow
+            </h3>
+            <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto">
+              A quick walkthrough of how FlowMaster simplifies and automates your workflows.
+            </p>
 
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 bg-slate-900 ring-1 ring-slate-900/10">
               <video

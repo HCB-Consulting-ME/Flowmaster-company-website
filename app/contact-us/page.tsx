@@ -5,8 +5,47 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Send, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { toast } from 'react-hot-toast';
 
 export default function ContactUsPage() {
+    const [loading, setLoading] = useState(false)
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        company: "",
+        message: "",
+    });
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            setLoading(true)
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message
+                }),
+            });
+
+            const data = await response.json();
+            toast.success(data.message);
+            console.log('Form Submmited successfully');
+            setFormData({
+                name: "",
+                email: "",
+                company: "",
+                message: "",
+            });
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false)
+        }
+    }
     return (
         <div className="flex flex-col min-h-screen">
             <header className="bg-navy-900 text-white pt-20 pb-32 px-8 text-center border-b border-white/5 relative overflow-hidden">
@@ -41,31 +80,52 @@ export default function ContactUsPage() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
                     <h2 className="text-2xl font-bold mb-8">Send us a Message</h2>
-                    <form className="space-y-6">
-                        <div className="grid md:grid-cols-2 gap-6">
+                    <form className="space-y-6" onSubmit={handleSubmit}>
+                        <div className="grid md:grid-cols-1 gap-6">
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold">First Name</label>
-                                <Input placeholder="Jane" />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-sm font-semibold">Last Name</label>
-                                <Input placeholder="Doe" />
+                                <label className="text-sm font-semibold">Name <span className="text-red-500">*</span></label>
+                                <Input
+                                    placeholder="Jane"
+                                    value={formData.name}
+                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                    required
+                                    className="focus-visible:ring-navy-900"
+                                />
                             </div>
                         </div>
-                        <div className="space-y-2">
-                            <label className="text-sm font-semibold">Work Email</label>
-                            <Input type="email" placeholder="jane@company.com" />
+                        <div className="space-y-2 p-2">
+                            <label className="text-sm font-semibold">Email <span className="text-red-500">*</span></label>
+                            <Input
+                                type="email"
+                                placeholder="jane@company.com"
+                                value={formData.email}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                required
+                                className="focus-visible:ring-navy-900"
+                            />
                         </div>
                         <div className="space-y-2">
                             <label className="text-sm font-semibold">Company</label>
-                            <Input placeholder="Enterprise AI Corp" />
+                            <Input
+                                placeholder="Enterprise AI Corp"
+                                value={formData.company}
+                                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                                className="focus-visible:ring-navy-900"
+                            />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-sm font-semibold">Message</label>
-                            <Textarea rows={4} placeholder="How can we help you?" className="resize-none" />
+                            <label className="text-sm font-semibold">Message <span className="text-red-500">*</span></label>
+                            <Textarea
+                                rows={4}
+                                placeholder="How can we help you?"
+                                className="resize-none focus-visible:ring-navy-900"
+                                value={formData.message}
+                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                required
+                            />
                         </div>
-                        <Button className="w-full bg-navy-900 text-white font-bold h-12 hover:bg-navy-800">
-                            Submit Inquiry <Send className="ml-2 w-4 h-4" />
+                        <Button type="submit" disabled={loading} className="w-full bg-navy-900 text-white font-semibold h-12 hover:bg-navy-800 rounded-xl">
+                            {loading ? "Sending..." : "Submit Message"} <Send className="ml-2 w-4 h-4" />
                         </Button>
                     </form>
                 </motion.section>
@@ -81,7 +141,7 @@ export default function ContactUsPage() {
                         <h2 className="text-2xl font-bold mb-6">Global Presence</h2>
                         <div className="space-y-6">
                             {[
-                                { title: "Middle East HQ", loc: "Dubai, United Arab Emirates" },
+                                { title: "Middle East HQ", loc: "Ajman, United Arab Emirates" },
                                 { title: "European Innovation Center", loc: "Frankfurt, Germany" },
                                 { title: "Asia-Pacific Regional Office", loc: "Karachi, Pakistan" },
                             ].map((office, i) => (
@@ -110,31 +170,63 @@ export default function ContactUsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.5 }}
                     >
-                        <img
-                            alt="World Map Illustration"
-                            className="w-full h-full object-cover opacity-50 grayscale"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYqU3c2jCdZsVKgq0gOUl5823j-2YsyBYsZGqOfADvQeXWhh5iJXWrJLD_5oeKIFzbbA0RY7S8t7SFu5F9rH3-IaauXY9WByeD8mzgBo4Aq8VPgW342rnAfBVB8SiqMIth-8KHFhyz-amlmml0I097ruTvEyKOXMWbuLhNhkG_a6ep0AnnRxfeRTvhCFSeNZf6aA226g-y_MLI4Rtpz3IPbYMC_D2tCFbu9TKdAA64Bdy0b6Aul59dlkL4oA94YqEC0YO0luP-kwQF"
+                        {/* Full Map Background */}
+                        <div
+                            className="absolute inset-0 opacity-60"
+                            style={{
+                                backgroundImage:
+                                    "url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')",
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                                filter: "grayscale(100%)",
+                            }}
                         />
-                        <div className="absolute inset-0 bg-navy-900/40 flex items-center justify-center">
-                            <p className="text-white font-medium border border-white/20 px-4 py-2 rounded-full backdrop-blur-md">
-                                Interactive Map Loading...
-                            </p>
-                        </div>
+
+                        {/* Dark Overlay */}
+                        <div className="absolute inset-0 bg-navy-900/50 backdrop-blur-[1px]" />
+
+                        {/* Locations */}
                         {[
-                            { top: "30%", left: "60%" },
-                            { top: "45%", left: "45%" },
-                            { top: "55%", left: "70%" },
-                        ].map((dot, i) => (
+                            {
+                                city: "Karachi",
+                                top: "38%",
+                                left: "68%",
+                            },
+                            {
+                                city: "Ajman",
+                                top: "50%",
+                                left: "54%",
+                            },
+                            {
+                                city: "Frankfurt",
+                                top: "28%", // Central Europe
+                                left: "48%",
+                            },
+                        ].map((loc, i) => (
                             <motion.div
-                                key={i}
-                                className="absolute w-3 h-3 bg-blue-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]"
-                                style={{ top: dot.top, left: dot.left }}
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ delay: 0.8 + (i * 0.2) }}
-                            ></motion.div>
+                                key={loc.city}
+                                className="absolute flex flex-col items-center"
+                                style={{ top: loc.top, left: loc.left }}
+                                initial={{ scale: 0, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ delay: 0.7 + i * 0.2 }}
+                            >
+                                {/* Pulse Ring */}
+                                <span className="absolute inline-flex h-6 w-6 rounded-full bg-blue-500/30 animate-ping" />
+
+                                {/* Dot */}
+                                <span className="relative inline-flex h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.9)]" />
+
+                                {/* Label */}
+                                <span className="mt-2 text-xs text-white bg-black/60 px-2 py-1 rounded-full backdrop-blur-md">
+                                    {loc.city}
+                                </span>
+                            </motion.div>
                         ))}
+
+
                     </motion.div>
+
                 </section>
             </main>
         </div>

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Toaster } from 'react-hot-toast';
 import { MessageCircle } from "lucide-react";
 import Contact from "@/components/Contact";
 
@@ -31,6 +32,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased font-sans bg-background text-foreground relative min-h-screen flex flex-col">
         <Navbar />
+        <Toaster position="top-right" reverseOrder={false} />
         <main className="flex-1">
           {children}
         </main>

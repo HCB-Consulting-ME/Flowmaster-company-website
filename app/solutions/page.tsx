@@ -220,55 +220,66 @@ export default function SolutionsPage() {
                                 exit={{ opacity: 0, y: -10 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                {solutionsData[activeTab as keyof typeof solutionsData]?.length > 0 ? (
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                        {solutionsData[activeTab as keyof typeof solutionsData].map((item, idx) => (
-                                            <Card key={idx} className="group border-none shadow-xl hover:shadow-2xl transition-all duration-500 dark:bg-slate-900/40 backdrop-blur-md dark:border dark:border-white/5 hover:translate-y-[-4px]">
-                                                <CardHeader className="pb-4">
-                                                    <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-500 shadow-inner">
-                                                        <item.icon className="w-7 h-7 text-blue-500 group-hover:text-white transition-colors duration-500" />
-                                                    </div>
-                                                    <CardTitle className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">{item.topic}</CardTitle>
-                                                    <Badge variant="secondary" className="w-fit mt-3 bg-blue-500/5 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider">
-                                                        {item.benefit}
-                                                    </Badge>
-                                                </CardHeader>
-                                                <CardContent className="space-y-6 pt-2">
-                                                    <div className="space-y-2">
-                                                        <div className="flex items-center gap-2">
-                                                            <div className="w-1 h-3 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
-                                                            <p className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">The Challenge</p>
+                                {(() => {
+                                    const currentItems = solutionsData[activeTab as keyof typeof solutionsData] || [];
+                                    const isCentered = currentItems.length < 3;
+
+                                    return currentItems.length > 0 ? (
+                                        <div className={cn(
+                                            "grid grid-cols-1 md:grid-cols-2 gap-6",
+                                            isCentered ? "lg:flex lg:justify-center" : "lg:grid-cols-3"
+                                        )}>
+                                            {currentItems.map((item, idx) => (
+                                                <Card key={idx} className={cn(
+                                                    "group border-none shadow-xl hover:shadow-2xl transition-all duration-500 dark:bg-slate-900/40 backdrop-blur-md dark:border dark:border-white/5 hover:translate-y-[-4px]",
+                                                    isCentered && "lg:w-full lg:max-w-[400px]"
+                                                )}>
+                                                    <CardHeader className="pb-4">
+                                                        <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-500 shadow-inner">
+                                                            <item.icon className="w-7 h-7 text-blue-500 group-hover:text-white transition-colors duration-500" />
                                                         </div>
-                                                        <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-                                                            {item.issue}
-                                                        </p>
-                                                    </div>
-                                                    <div className="pt-6 border-t border-slate-100 dark:border-white/5 space-y-2">
-                                                        <div className="flex items-center gap-2">
-                                                            <div className="w-1 h-3 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
-                                                            <p className="text-[10px] font-extrabold uppercase tracking-widest text-blue-500">FlowMaster Solution</p>
+                                                        <CardTitle className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">{item.topic}</CardTitle>
+                                                        <Badge variant="secondary" className="w-fit mt-3 bg-blue-500/5 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider">
+                                                            {item.benefit}
+                                                        </Badge>
+                                                    </CardHeader>
+                                                    <CardContent className="space-y-6 pt-2">
+                                                        <div className="space-y-2">
+                                                            <div className="flex items-center gap-2">
+                                                                <div className="w-1 h-3 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+                                                                <p className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">The Challenge</p>
+                                                            </div>
+                                                            <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                                                                {item.issue}
+                                                            </p>
                                                         </div>
-                                                        <p className="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-semibold">
-                                                            {item.impact}
-                                                        </p>
-                                                    </div>
-                                                </CardContent>
-                                            </Card>
-                                        ))}
-                                    </div>
-                                ) : (
-                                    <Card className="py-24 md:py-32 text-center bg-white/40 dark:bg-slate-900/20 backdrop-blur-sm border-dashed border-2 border-slate-200 dark:border-slate-800 rounded-[2rem]">
-                                        <div className="flex flex-col items-center">
-                                            <div className="p-6 rounded-full bg-slate-50 dark:bg-slate-900/50 mb-6 shadow-inner">
-                                                <Lightbulb className="w-12 h-12 text-slate-300 dark:text-slate-600 animate-pulse" />
-                                            </div>
-                                            <h3 className="text-2xl font-bold text-slate-400 dark:text-slate-500">Industry Module: Pending</h3>
-                                            <p className="text-slate-400 dark:text-slate-500 max-w-sm mx-auto mt-3 text-lg">
-                                                We are currently mapping high-impact AI agents for the <span className="text-slate-500 dark:text-slate-400 font-bold">{industries.find(i => i.id === activeTab)?.label}</span> sector.
-                                            </p>
+                                                        <div className="pt-6 border-t border-slate-100 dark:border-white/5 space-y-2">
+                                                            <div className="flex items-center gap-2">
+                                                                <div className="w-1 h-3 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+                                                                <p className="text-[10px] font-extrabold uppercase tracking-widest text-blue-500">FlowMaster Solution</p>
+                                                            </div>
+                                                            <p className="text-sm md:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-semibold">
+                                                                {item.impact}
+                                                            </p>
+                                                        </div>
+                                                    </CardContent>
+                                                </Card>
+                                            ))}
                                         </div>
-                                    </Card>
-                                )}
+                                    ) : (
+                                        <Card className="py-24 md:py-32 text-center bg-white/40 dark:bg-slate-900/20 backdrop-blur-sm border-dashed border-2 border-slate-200 dark:border-slate-800 rounded-[2rem]">
+                                            <div className="flex flex-col items-center">
+                                                <div className="p-6 rounded-full bg-slate-50 dark:bg-slate-900/50 mb-6 shadow-inner">
+                                                    <Lightbulb className="w-12 h-12 text-slate-300 dark:text-slate-600 animate-pulse" />
+                                                </div>
+                                                <h3 className="text-2xl font-bold text-slate-400 dark:text-slate-500">Industry Module: Pending</h3>
+                                                <p className="text-slate-400 dark:text-slate-500 max-w-sm mx-auto mt-3 text-lg">
+                                                    We are currently mapping high-impact AI agents for the <span className="text-slate-500 dark:text-slate-400 font-bold">{industries.find(i => i.id === activeTab)?.label}</span> sector.
+                                                </p>
+                                            </div>
+                                        </Card>
+                                    );
+                                })()}
                             </motion.div>
                         </TabsContent>
                     </AnimatePresence>
