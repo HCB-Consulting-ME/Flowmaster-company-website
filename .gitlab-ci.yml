@@ -189,7 +189,6 @@ deploy_production:
     url: https://flow-master.ai
   only:
     - main
-  when: manual
   dependencies:
     - build
 
