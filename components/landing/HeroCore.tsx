@@ -46,7 +46,7 @@ export function HeroCore() {
                         <Cloud className="text-blue-400 w-5 h-5 md:w-8 md:h-8" />
                     </motion.div>
                     <p className="text-[8px] md:text-[11px] font-bold text-slate-300 uppercase leading-tight tracking-tighter">
-                        User Data<br />
+                        Enterprise Data<br />
                         <span className="text-blue-400 font-medium lowercase">(apis/erp)</span>
                     </p>
                 </div>

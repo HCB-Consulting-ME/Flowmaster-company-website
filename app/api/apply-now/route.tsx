@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { transporter } from '@/lib/mailer';
+import { graphClient } from '@/lib/graphClient';
 
 export async function POST(req: Request) {
     try {
@@ -16,24 +16,42 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: "No CV uploaded" }, { status: 400 });
         }
 
-        // Convert File to Buffer for Nodemailer
-        const bytes = await cvFile.arrayBuffer();
-        const buffer = Buffer.from(bytes);
+        // Convert File to Buffer then to Base64 for Graph API
+        const arrayBuffer = await cvFile.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        const base64Content = buffer.toString('base64');
 
-        const mailOptions = {
-
-            to: process.env.NODE_MAILER_EMAIL,
-            subject: `New Job Application: ${jobTitle} - ${name}`,
-            text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nPosition: ${jobTitle}`,
-            attachments: [
-                {
-                    filename: cvFile.name,
-                    content: buffer,
+        await graphClient.api(`/users/${process.env.CAREER_EMAIL}/sendMail`).post({
+            message: {
+                subject: `New Job Application: ${jobTitle} - ${name}`,
+                body: {
+                    contentType: "HTML",
+                    content: `
+                        <h3>New Job Application Received</h3>
+                        <p><strong>Job Title:</strong> ${jobTitle}</p>
+                        <p><strong>Name:</strong> ${name}</p>
+                        <p><strong>Email:</strong> ${email}</p>
+                        <p><strong>Phone:</strong> ${phone}</p>
+                    `,
                 },
-            ],
-        };
-
-        await transporter.sendMail(mailOptions);
+                toRecipients: [
+                    {
+                        emailAddress: {
+                            address: process.env.CAREER_EMAIL!,
+                        },
+                    },
+                ],
+                attachments: [
+                    {
+                        "@odata.type": "#microsoft.graph.fileAttachment",
+                        name: cvFile.name,
+                        contentType: cvFile.type || "application/pdf",
+                        contentBytes: base64Content,
+                    },
+                ],
+            },
+            saveToSentItems: "true",
+        });
 
         return NextResponse.json({ message: "Application submitted successfully!" }, { status: 200 });
     } catch (error) {

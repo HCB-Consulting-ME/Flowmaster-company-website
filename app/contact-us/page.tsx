@@ -93,7 +93,7 @@ export default function ContactUsPage() {
                                 />
                             </div>
                         </div>
-                        <div className="space-y-2 p-2">
+                        <div className="space-y-2">
                             <label className="text-sm font-semibold">Email <span className="text-red-500">*</span></label>
                             <Input
                                 type="email"

@@ -106,7 +106,7 @@ export default function Footer() {
                                     contact@flow-master.ai
                                 </Link>
                             </li>
-                            <li>© {new Date().getFullYear()} FlowMaster FZC LLC</li>
+                            <li>© 2025 FlowMaster FZC LLC</li>
                         </ul>
                     </div>
                 </div>
