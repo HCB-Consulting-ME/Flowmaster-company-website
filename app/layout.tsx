@@ -4,8 +4,6 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from 'react-hot-toast';
-import { MessageCircle } from "lucide-react";
-import Contact from "@/components/Contact";
 
 // We keep Material Icons locally or via CDN for compatibility with existing assets if needed, 
 // but we prefer Lucide for new components.

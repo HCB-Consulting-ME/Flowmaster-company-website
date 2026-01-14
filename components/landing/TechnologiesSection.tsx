@@ -1,30 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-const TechnologyItem = ({ name, short }: { name: string, short?: string }) => (
-    <div className="flex items-center justify-center px-4 py-2 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
-        <span className="text-lg md:text-xl font-bold text-slate-700 dark:text-slate-300 whitespace-nowrap">
-            {name}
-        </span>
-    </div>
-);
-
 const TechnologiesSection = () => {
-    const technologies = [
-        "FlowMaster SDX",
-        "FlowMaster DXG",
-        "FlowMaster BAC",
-        "MCP",
-        "A2A",
-        "Agent Skills",
-        "Claude",
-        "Grok",
-        "ChatGPT",
-        "DeepSeek",
-        "Gemini",
-        "LLaMA"
-    ];
 
     return (
         <section className="py-16 bg-background border-b border-slate-100 dark:border-slate-800">

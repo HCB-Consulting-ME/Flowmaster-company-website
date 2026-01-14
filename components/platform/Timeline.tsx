@@ -115,7 +115,7 @@ const FlowMasterTimeline = () => {
                                         }}
                                     >
                                         <div className="w-12 h-12 rounded-2xl bg-slate-800/80 border border-white/10 flex items-center justify-center shadow-2xl backdrop-blur-sm">
-                                            {React.cloneElement(step.icon as React.ReactElement<any>, { className: "text-blue-400 w-5 h-5" })}
+                                            {React.cloneElement(step.icon as React.ReactElement<{ className?: string }>, { className: "text-blue-400 w-5 h-5" })}
                                         </div>
                                         <span className="text-sm font-bold text-slate-200 tracking-wide">{step.title}</span>
                                     </motion.div>
@@ -146,7 +146,7 @@ const FlowMasterTimeline = () => {
 
                     {/* Mobile Timeline: Simplified reveal for vertical flow */}
                     <div className="md:hidden space-y-10 relative pl-4">
-                        {steps.map((step, idx) => (
+                        {steps.map((step) => (
                             <motion.div
                                 key={step.id}
                                 initial={{ opacity: 0 }}
@@ -156,7 +156,7 @@ const FlowMasterTimeline = () => {
                                 className="relative flex gap-6"
                             >
                                 <div className="shrink-0 w-12 h-12 rounded-2xl bg-slate-800 border border-white/10 flex items-center justify-center">
-                                    {React.cloneElement(step.icon as React.ReactElement<any>, { className: "text-blue-400 w-5 h-5" })}
+                                    {React.cloneElement(step.icon as React.ReactElement<{ className?: string }>, { className: "text-blue-400 w-5 h-5" })}
                                 </div>
                                 <div className="flex flex-col pt-1">
                                     <h4 className="text-lg font-bold text-slate-100 mb-1">{step.title}</h4>

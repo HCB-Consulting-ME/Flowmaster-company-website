@@ -1,8 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { CheckCircle2, Lock, FileKey, TrendingUp, MessageSquare, Calendar } from "lucide-react";
-import { ManagerAppIllustration, FeatureIllustration, SecurityIllustration, OptimizationIllustration, PlatformHeaderGraphic, GovernanceGraphic } from "@/components/platform/PlatformGraphics";
+import { CheckCircle2, Lock, FileKey, TrendingUp, MessageSquare } from "lucide-react";
+import { SecurityIllustration, OptimizationIllustration, GovernanceGraphic } from "@/components/platform/PlatformGraphics";
 import { motion } from "framer-motion";
 import FlowMasterTimeline from "@/components/platform/Timeline";
 
@@ -134,7 +133,7 @@ export default function PlatformPage() {
                             </div>
                             <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-foreground">Agents as Employees</h2>
                             <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-                                Deploy AI agents that act as "digital employees," each assigned to a human manager. They learn from every interaction and escalate when uncertain.
+                                Deploy AI agents that act as &quot;digital employees,&quot; each assigned to a human manager. They learn from every interaction and escalate when uncertain.
                             </p>
                             <div className="space-y-4">
                                 <div className="flex items-center gap-4 p-4 rounded-xl border border-border bg-background group hover:border-blue-500/50 transition-colors">

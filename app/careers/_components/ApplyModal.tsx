@@ -4,7 +4,6 @@ import {
     DialogDescription,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -48,7 +47,7 @@ export const ApplyModal = ({ open, onOpenChange, job }: ApplyModalProps) => {
             } else {
                 toast.error("Something went wrong.");
             }
-        } catch (error) {
+        } catch {
             toast.error("Failed to connect to server.");
         } finally {
             setLoading(false);

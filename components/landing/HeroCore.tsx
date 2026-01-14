@@ -16,7 +16,7 @@ export function HeroCore() {
                 "0 0 50px rgba(59,130,246,0.6)",
                 "0 0 20px rgba(59,130,246,0.3)"
             ],
-            transition: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+            transition: { duration: 3, repeat: Infinity, ease: "easeInOut" as const }
         }
     };
 

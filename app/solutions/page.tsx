@@ -4,20 +4,18 @@ import { useState } from "react";
 import {
     Landmark, RadioTower, Zap, Wallet, Truck,
     UserPlus, FileText, Gavel, Banknote,
-    CheckCircle2, ArrowRight, Lightbulb
+    CheckCircle2, Lightbulb
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 // Shadcn Components (Ensure these are installed)
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
-
     Globe, ShieldCheck, Activity,
-    Server, Construction, ClipboardList
+    Server, ClipboardList
 } from "lucide-react"
 const industries = [
     { id: "banking", label: "Banking & Finance", icon: Landmark },

@@ -1,8 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Lightbulb, Handshake, Headphones, DollarSign, ArrowRight, CheckCircle2 } from "lucide-react";
-import Image from "next/image";
+import { Lightbulb, Handshake, Headphones, DollarSign, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 

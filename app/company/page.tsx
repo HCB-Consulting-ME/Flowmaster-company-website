@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Play, BarChart, Briefcase, Users, Flag, Lightbulb, ShieldCheck, Network } from "lucide-react";
+import { Lightbulb, ShieldCheck, Network } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
@@ -118,7 +118,7 @@ export default function CompanyPage() {
                                 </div> */}
                                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                                     Our FlowMaster AI journey began with a vision to redefine enterprise efficiency. From our
-                                    humble beginnings in research labs to becoming a global leader in AI orchestration, we've
+                                    humble beginnings in research labs to becoming a global leader in AI orchestration, we&apos;ve
                                     remained focused on delivering measurable impact through innovative, scalable technology.
                                 </p>
                                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">

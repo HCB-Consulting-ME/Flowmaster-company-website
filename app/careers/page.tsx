@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Lightbulb, Users, Zap, TrendingUp, MapPin, Briefcase, Mail, Upload } from "lucide-react";
+import { Lightbulb, Users, Zap, TrendingUp, MapPin, Briefcase, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { ApplyModal } from "./_components/ApplyModal";
 
@@ -197,9 +197,9 @@ export default function CareersPage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="text-4xl font-bold mb-6">Intrigued? Let's talk!</h2>
+                    <h2 className="text-4xl font-bold mb-6">Intrigued? Let&apos;s talk!</h2>
                     <p className="text-xl text-blue-100 mb-10">
-                        Don't see the perfect role? Send us a note with your CV and tell us how you can help us shape the future
+                        Don&apos;t see the perfect role? Send us a note with your CV and tell us how you can help us shape the future
                         of enterprise AI.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

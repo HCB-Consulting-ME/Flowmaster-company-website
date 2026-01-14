@@ -1,6 +1,5 @@
 'use client'
-import Link from "next/link";
-import { ArrowRight, CheckCircle2, Sliders, MonitorSmartphone, Sparkles, Play, AlertCircle } from "lucide-react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 import { HeroCore } from "@/components/landing/HeroCore";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";

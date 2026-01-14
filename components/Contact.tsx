@@ -10,7 +10,7 @@ export default function Contact() {
                 onClick={() => router.push("/contact-us")}
             >
                 <MessageCircle className="h-5 w-5" />
-                <span className="font-bold">Let's Talk</span>
+                <span className="font-bold">Let&apos;s Talk</span>
             </button>
         </div>
     )
