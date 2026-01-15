@@ -13,6 +13,7 @@ import { Toaster } from 'react-hot-toast';
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://flow-master.ai"),
   title: "FlowMaster | Enterprise-Ready AI Agents",
   description: "The Platform for Enterprise-Ready AI Agents.",
   icons: {
@@ -26,9 +27,9 @@ export const metadata: Metadata = {
     siteName: "FlowMaster",
     images: [
       {
-        url: "https://flow-master.ai/Logo/logoicon2.png",
-        width: 512,
-        height: 512,
+        url: "https://flow-master.ai/Logo/image3.png",
+        width: 587,
+        height: 425,
         alt: "FlowMaster Logo",
       },
     ],
@@ -36,10 +37,10 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "FlowMaster | Enterprise-Ready AI Agents",
     description: "The Platform for Enterprise-Ready AI Agents.",
-    images: ["https://flow-master.ai/Logo/logoicon2.png"],
+    images: ["https://flow-master.ai/Logo/image3.png"],
   },
 };
 
