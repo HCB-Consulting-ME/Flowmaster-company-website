@@ -73,7 +73,7 @@ export default function CompanyPage() {
                             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-6">
                                 {[
                                     { name: "Benjamin Hippler", role: "CEO & Founder", img: '/Company/ben.png' },
-                                    { name: "Muhammad Irtiza", role: "Co-Founder", img: '/Company/irtiza.png' },
+                                    { name: "Muhammad Irtiza", role: "CTO & Co-Founder", img: '/Company/irtiza.png' },
 
                                 ].map((leader, i) => (
                                     <motion.div
