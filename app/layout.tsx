@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     siteName: "FlowMaster",
     images: [
       {
-        url: "https://flow-master.ai/Logo/image3.png",
-        width: 587,
-        height: 425,
+        url: "https://flow-master.ai/Logo/image.png",
+        width: 2556,
+        height: 1360,
         alt: "FlowMaster Logo",
       },
     ],
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FlowMaster | Enterprise-Ready AI Agents",
     description: "The Platform for Enterprise-Ready AI Agents.",
-    images: ["https://flow-master.ai/Logo/image3.png"],
+    images: ["https://flow-master.ai/Logo/image.png"],
   },
 };
 
