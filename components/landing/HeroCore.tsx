@@ -34,7 +34,7 @@ export function HeroCore() {
             {/* Responsive Wrapper: 
                - Uses flex-col on mobile, flex-row on desktop
             */}
-            <div className="w-full max-w-6xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 scale-[0.85] sm:scale-90 md:scale-100 transition-transform duration-500">
+            <div className="w-full max-w-4xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-3 scale-[0.85] sm:scale-90 md:scale-95 lg:scale-100 transition-transform duration-500">
 
                 {/* 1. USER DATA SOURCES */}
                 <div className="flex flex-col items-center text-center flex-1">
