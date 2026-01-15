@@ -110,20 +110,19 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <Separator className="my-10 bg-white/20" />
+{/*                 <Separator className="my-10 bg-white/20" />
 
-                {/* Bottom Bar */}
                 <div className="flex flex-col items-center justify-between gap-4 text-xs md:flex-row text-white/70">
                     <p>All rights reserved. Built for the future of automation.</p>
-{/*                     <div className="flex gap-6">
+                    <div className="flex gap-6">
                         <Link href="/privacy" className="hover:text-white transition-colors">
                             Privacy Policy
                         </Link>
                         <Link href="/terms" className="hover:text-white transition-colors">
                             Terms of Service
                         </Link>
-                    </div> */}
-                </div>
+                    </div>
+                </div> */}
             </div>
         </footer>
     );
