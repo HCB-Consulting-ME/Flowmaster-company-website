@@ -79,7 +79,7 @@ export function Navbar() {
         >
             <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <Link href="/" className="hover:opacity-90 transition-opacity">
-                    <Image src="/logo/newLogo.png" alt="Flowmaster Logo" width={180} height={40} priority />
+                    <Image src="/Logo/newLogo.png" alt="Flowmaster Logo" width={180} height={40} priority />
                 </Link>
 
                 {/* Desktop Navigation */}

@@ -12,7 +12,7 @@ export default function Footer() {
                 {/* Branding Header Section */}
                 {/* <div className="flex flex-col md:flex-row items-center gap-6">
                     <Image
-                        src="/logo/newLogo.png"
+                        src="/Logo/newLogo.png"
                         alt="Company Logo"
                         width={230}
                         height={230}

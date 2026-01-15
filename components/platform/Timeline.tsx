@@ -84,7 +84,7 @@ const FlowMasterTimeline = () => {
                             >
                                 <div className="relative h-24 w-24 translate-x-[-50%] opacity-90">
                                     <Image
-                                        src="/logo/logoicon2.png"
+                                        src="/Logo/logoicon2.png"
                                         alt="Indicator"
                                         fill
                                         className="object-contain"
