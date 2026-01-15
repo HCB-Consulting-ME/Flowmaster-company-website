@@ -15,6 +15,32 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "FlowMaster | Enterprise-Ready AI Agents",
   description: "The Platform for Enterprise-Ready AI Agents.",
+  icons: {
+    icon: "/Logo/logoicon2.png",
+    apple: "/Logo/logoicon2.png",
+  },
+  openGraph: {
+    title: "FlowMaster | Enterprise-Ready AI Agents",
+    description: "The Platform for Enterprise-Ready AI Agents.",
+    url: "https://flow-master.ai",
+    siteName: "FlowMaster",
+    images: [
+      {
+        url: "/Logo/logoicon2.png",
+        width: 512,
+        height: 512,
+        alt: "FlowMaster Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "FlowMaster | Enterprise-Ready AI Agents",
+    description: "The Platform for Enterprise-Ready AI Agents.",
+    images: ["/Logo/logoicon2.png"],
+  },
 };
 
 export default function RootLayout({
