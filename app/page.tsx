@@ -57,7 +57,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
           <motion.div
-            className="relative flex justify-center items-center z-10 overflow-hidden"
+            className="relative flex justify-center items-center z-10"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
