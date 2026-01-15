@@ -1,6 +1,6 @@
 'use client'
 import { CheckCircle2, AlertCircle } from "lucide-react";
-import { HeroCore } from "@/components/landing/HeroCore";
+// HeroCore component replaced with static image
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -62,7 +62,14 @@ export default function Home() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <HeroCore />
+            <Image
+              src="/Logo/sdx.jpeg"
+              alt="FlowMaster SDX Platform Architecture"
+              width={800}
+              height={600}
+              className="rounded-2xl shadow-2xl"
+              priority
+            />
           </motion.div>
         </div>
       </section>
