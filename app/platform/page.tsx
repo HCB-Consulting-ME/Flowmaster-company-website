@@ -16,7 +16,7 @@ export default function PlatformPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-4xl md:text-6xl font-bold mb-6 tracking-tight mt-20"
+                        className="text-4xl md:text-5xl font-bold mb-6 tracking-tight mt-20"
                     >
                         The Flowmaster AI Agent Platform
                     </motion.h1>
@@ -79,7 +79,7 @@ export default function PlatformPage() {
             </section>
 
             {/* Security */}
-            <section className="relative py-16 bg-background border-t border-border">
+            <section className="relative py-16 bg-background border-t border-border overflow-hidden">
                 <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-200 dark:bg-slate-800 -translate-x-1/2"></div>
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
@@ -117,7 +117,7 @@ export default function PlatformPage() {
             </section>
 
             {/* Optimization */}
-            <section className="relative py-16 bg-slate-50 dark:bg-slate-900/30 border-t border-border">
+            <section className="relative py-16 bg-slate-50 dark:bg-slate-900/30 border-t border-border overflow-hidden">
                 <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-200 dark:bg-slate-800 -translate-x-1/2"></div>
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

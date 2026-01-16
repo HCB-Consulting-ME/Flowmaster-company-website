@@ -162,7 +162,10 @@ export function Navbar() {
                                                                 key={child.href}
                                                                 href={child.href}
                                                                 onClick={() => setIsOpen(false)}
-                                                                className="text-slate-300 hover:text-white text-base"
+                                                                className={cn(
+                                                                    "text-base hover:text-white transition-colors",
+                                                                    pathname === child.href ? "text-white font-bold" : "text-slate-300"
+                                                                )}
                                                             >
                                                                 {child.label}
                                                             </Link>

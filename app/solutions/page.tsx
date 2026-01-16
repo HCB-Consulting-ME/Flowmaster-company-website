@@ -177,7 +177,7 @@ export default function SolutionsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
+                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-tight mt-10 md:mt-0">
                             AI Solutions for Every Industry:<br className="hidden sm:block" />
                             <span className="text-blue-400">Advanced FlowMaster Intelligence.</span>
                         </h1>

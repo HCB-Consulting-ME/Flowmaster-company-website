@@ -14,7 +14,7 @@ export default function CompanyPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#1e293b_0%,#020617_100%)]"></div>
                 <div className="max-w-4xl mx-auto px-4 relative z-10">
                     <motion.h1
-                        className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+                        className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
@@ -122,8 +122,7 @@ export default function CompanyPage() {
                                     remained focused on delivering measurable impact through innovative, scalable technology.
                                 </p>
                                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                                    Today, FlowMaster empowers thousands of organizations to automate complex workflows with
-                                    security and precision at the core of every agent.
+                                    FlowMaster can empowers thousands of organizations to automate complex workflows with security and precision at the core of every agent.
                                 </p>
                             </div>
                         </motion.div>

@@ -81,8 +81,9 @@ export default function PricingPage() {
                                     </tbody>
                                 </table>
                             </div>
-                            <Button className="w-full mt-8" variant="outline" size="lg">
-                                Get Started Free
+                            <Button onClick={() => { window.location.href = "/contact-us" }} className="w-full mt-8" variant="outline" size="lg">
+                                Join the Waitlist
+
                             </Button>
                         </div>
                     </motion.div>
@@ -102,9 +103,7 @@ export default function PricingPage() {
                                 <h2 className="text-2xl font-bold text-navy-900 dark:text-blue-400">Enterprise</h2>
                                 <p className="text-slate-500 text-sm">Customized for scale & security</p>
                             </div>
-                            <a className="text-navy-900 dark:text-blue-400 font-semibold flex items-center gap-1 hover:underline cursor-pointer">
-                                Contact Us <ArrowRight className="w-4 h-4" />
-                            </a>
+
                         </div>
                         <div className="p-6 space-y-6">
                             <div className="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg border-l-4 border-navy-900 dark:border-blue-500">
@@ -158,8 +157,8 @@ export default function PricingPage() {
                                 </div>
                             </div>
 
-                            <Button className="w-full py-6 text-sm font-bold uppercase tracking-widest bg-navy-900 text-white hover:bg-navy-800">
-                                Contact Sales for Custom Quote
+                            <Button onClick={() => { window.location.href = "/contact-us" }} className="w-full py-6 text-sm font-bold uppercase tracking-widest bg-navy-900 text-white hover:bg-navy-800">
+                                Join the Waitlist
                             </Button>
                         </div>
                     </motion.div>

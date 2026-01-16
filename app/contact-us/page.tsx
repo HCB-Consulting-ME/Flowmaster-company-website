@@ -7,6 +7,12 @@ import { Send, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { toast } from 'react-hot-toast';
+import dynamic from 'next/dynamic';
+
+const Map = dynamic(() => import('@/components/Map'), {
+    ssr: false,
+    loading: () => <div className="w-full h-full bg-slate-200 animate-pulse rounded-xl" />
+});
 
 export default function ContactUsPage() {
     const [loading, setLoading] = useState(false)
@@ -16,6 +22,11 @@ export default function ContactUsPage() {
         company: "",
         message: "",
     });
+    const offices = [
+        { title: "Head Office - Dubai", loc: "Ajman, UAE", lat: 25.4052, lng: 55.5136 },
+        { title: "Global Delivery Center - Karachi", loc: "Karachi, PK", lat: 24.8607, lng: 67.0011 },
+        { title: "Innovation Center - Frankfurt", loc: "Frankfurt, DE", lat: 50.1109, lng: 8.6821 },
+    ];
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -52,7 +63,7 @@ export default function ContactUsPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#1e293b_0%,#020617_100%)]"></div>
                 <div className="relative z-10">
                     <motion.h1
-                        className="text-5xl font-bold mb-6 tracking-tight my-10"
+                        className="text-4xl md:text-5xl font-bold mb-6 tracking-tight my-10"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
@@ -140,19 +151,15 @@ export default function ContactUsPage() {
                     >
                         <h2 className="text-2xl font-bold mb-6">Global Presence</h2>
                         <div className="space-y-6">
-                            {[
-                                { title: "Middle East HQ", loc: "Ajman, United Arab Emirates" },
-                                { title: "European Innovation Center", loc: "Frankfurt, Germany" },
-                                { title: "Asia-Pacific Regional Office", loc: "Karachi, Pakistan" },
-                            ].map((office, i) => (
+                            {offices.map((office, i) => (
                                 <motion.div
                                     key={office.title}
                                     className="flex items-start space-x-4"
                                     initial={{ opacity: 0, x: 20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.4 + (i * 0.1) }}
+                                    transition={{ delay: 0.4 + i * 0.15 }}
                                 >
-                                    <div className="bg-blue-500/10 p-3 rounded-full text-blue-500">
+                                    <div className="bg-blue-500/10 p-3 rounded-full text-navy-900">
                                         <MapPin className="w-5 h-5" />
                                     </div>
                                     <div>
@@ -164,67 +171,14 @@ export default function ContactUsPage() {
                         </div>
                     </motion.div>
 
+
                     <motion.div
-                        className="relative h-[300px] rounded-xl overflow-hidden shadow-xl border border-border bg-navy-900"
+                        className="relative h-[300px] rounded-xl overflow-hidden shadow-xl border border-border"
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.5 }}
                     >
-                        {/* Full Map Background */}
-                        <div
-                            className="absolute inset-0 opacity-60"
-                            style={{
-                                backgroundImage:
-                                    "url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')",
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
-                                filter: "grayscale(100%)",
-                            }}
-                        />
-
-                        {/* Dark Overlay */}
-                        <div className="absolute inset-0 bg-navy-900/50 backdrop-blur-[1px]" />
-
-                        {/* Locations */}
-                        {[
-                            {
-                                city: "Karachi",
-                                top: "38%",
-                                left: "68%",
-                            },
-                            {
-                                city: "Ajman",
-                                top: "50%",
-                                left: "54%",
-                            },
-                            {
-                                city: "Frankfurt",
-                                top: "28%", // Central Europe
-                                left: "48%",
-                            },
-                        ].map((loc, i) => (
-                            <motion.div
-                                key={loc.city}
-                                className="absolute flex flex-col items-center"
-                                style={{ top: loc.top, left: loc.left }}
-                                initial={{ scale: 0, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{ delay: 0.7 + i * 0.2 }}
-                            >
-                                {/* Pulse Ring */}
-                                <span className="absolute inline-flex h-6 w-6 rounded-full bg-blue-500/30 animate-ping" />
-
-                                {/* Dot */}
-                                <span className="relative inline-flex h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.9)]" />
-
-                                {/* Label */}
-                                <span className="mt-2 text-xs text-white bg-black/60 px-2 py-1 rounded-full backdrop-blur-md">
-                                    {loc.city}
-                                </span>
-                            </motion.div>
-                        ))}
-
-
+                        <Map locations={offices} className="z-0" />
                     </motion.div>
 
                 </section>

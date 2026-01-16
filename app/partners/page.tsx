@@ -14,7 +14,7 @@ export default function PartnersPage() {
 
                 <div className="max-w-7xl mx-auto relative z-10">
                     <motion.h1
-                        className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight tracking-tight"
+                        className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-tight"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}

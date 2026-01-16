@@ -46,7 +46,7 @@ export default function CareersPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#1e293b_0%,#020617_100%)]"></div>
                 <div className="max-w-4xl mx-auto relative z-10">
                     <motion.h1
-                        className="text-2xl md:text-5xl font-bold text-white mb-8 leading-tight tracking-tight"
+                        className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight tracking-tight mt-10 md:mt-0"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}

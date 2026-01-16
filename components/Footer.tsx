@@ -28,7 +28,7 @@ export default function Footer() {
                 {/* Divider */}
                 {/* <Separator className="my-5 mb-10 bg-white/20" /> */}
 
-                <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
+                <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-8 text-left">
 
                     {/* Description */}
                     <div className="space-y-4">
@@ -36,8 +36,7 @@ export default function Footer() {
                             About FlowMaster
                         </h4>
                         <p className="text-sm text-white/80">
-                            Building intelligent platforms that help teams automate,
-                            scale, and move faster with confidence.
+                            FlowMaster enables enterprises to execute existing business processes using AI. It provides a single end-to-end orchestration and execution layer across current systems and data landscapes, with human oversight where required.
                         </p>
                     </div>
 
@@ -105,12 +104,12 @@ export default function Footer() {
                                     contact@flow-master.ai
                                 </Link>
                             </li>
-                            <li>© 2025 FlowMaster FZC LLC</li>
+                            <li>© 2026 FlowMaster FZC LLC</li>
                         </ul>
                     </div>
                 </div>
 
-{/*                 <Separator className="my-10 bg-white/20" />
+                {/*                 <Separator className="my-10 bg-white/20" />
 
                 <div className="flex flex-col items-center justify-between gap-4 text-xs md:flex-row text-white/70">
                     <p>All rights reserved. Built for the future of automation.</p>

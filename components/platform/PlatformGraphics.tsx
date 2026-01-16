@@ -281,7 +281,7 @@ export function SecurityIllustration() {
             className="relative border-2 border-blue-500/30 p-8 rounded-3xl backdrop-blur-sm min-h-[400px] flex items-center justify-center bg-gradient-to-br from-blue-500/5 to-slate-900/10 group hover:border-blue-500/50 transition-all duration-300"
         >
             <div className="w-full h-full flex flex-col items-center justify-center space-y-6 relative z-10">
-                <div className="relative w-80 h-64 flex items-center justify-center">
+                <div className="relative w-full max-w-xs h-64 flex items-center justify-center">
                     {/* Window frame */}
                     <div className="absolute inset-0 border-2 border-blue-500/40 rounded-xl overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950 shadow-[0_0_20px_rgba(59,130,246,0.1)]">
                         <div className="h-8 bg-gradient-to-r from-slate-800 to-slate-900 border-b border-slate-700/50 px-3 flex items-center gap-1 group/titlebar">
@@ -344,7 +344,7 @@ export function OptimizationIllustration() {
             </div>
 
             <div className="w-full h-full flex flex-col items-center justify-center relative z-10">
-                <div className="relative w-80 h-80 flex items-center justify-center">
+                <div className="relative w-full max-w-xs h-80 flex items-center justify-center">
                     {/* Outer ring */}
                     <div className="absolute inset-0 rounded-full border-4 border-slate-700 opacity-30"></div>
 
