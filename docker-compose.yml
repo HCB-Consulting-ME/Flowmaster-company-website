@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  flowmaster-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flowmaster-website
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:/app/data/flowmaster.db
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-flowmaster-admin-secret-key-change-in-production-2026}
+      - AZURE_TENANT_ID=${AZURE_TENANT_ID}
+      - AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
+      - AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}
+      - EMAIL_FROM=${EMAIL_FROM:-contact@flow-master.ai}
+      - CAREER_EMAIL=${CAREER_EMAIL:-careers@flow-master.ai}
+    volumes:
+      # Persist SQLite database
+      - flowmaster-data:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Development service with hot reload
+  flowmaster-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: flowmaster-dev
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=file:/app/data/dev.db
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=flowmaster-dev-secret-key
+      - AZURE_TENANT_ID=${AZURE_TENANT_ID}
+      - AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
+      - AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}
+      - EMAIL_FROM=${EMAIL_FROM:-contact@flow-master.ai}
+      - CAREER_EMAIL=${CAREER_EMAIL:-careers@flow-master.ai}
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - flowmaster-dev-data:/app/data
+    profiles:
+      - dev
+
+volumes:
+  flowmaster-data:
+    name: flowmaster-data
+  flowmaster-dev-data:
+    name: flowmaster-dev-data

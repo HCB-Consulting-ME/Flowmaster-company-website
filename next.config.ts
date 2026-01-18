@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Docker standalone output
+  output: "standalone",
+
   // Production optimizations
   poweredByHeader: false,
   compress: true,

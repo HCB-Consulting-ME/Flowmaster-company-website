@@ -4,9 +4,41 @@ import { Button } from "@/components/ui/button";
 import { Lightbulb, ShieldCheck, Network } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+interface TeamMember {
+    id: string;
+    name: string;
+    role: string;
+    image: string;
+    linkedIn?: string;
+}
+
+const DEFAULT_TEAM = [
+    { id: "1", name: "Benjamin Hippler", role: "CEO & Founder", image: '/Company/ben.png' },
+    { id: "2", name: "Muhammad Irtiza", role: "CTO & Co-Founder", image: '/Company/irtiza.png' },
+];
 
 export default function CompanyPage() {
-    const router = useRouter()
+    const router = useRouter();
+    const [team, setTeam] = useState<TeamMember[]>(DEFAULT_TEAM);
+
+    useEffect(() => {
+        async function fetchTeam() {
+            try {
+                const res = await fetch("/api/public/team");
+                if (res.ok) {
+                    const data = await res.json();
+                    setTeam(data); // Always use API data, even if empty
+                }
+            } catch (error) {
+                console.error("Failed to fetch team:", error);
+                // Keep DEFAULT_TEAM only on fetch failure
+            }
+        }
+        fetchTeam();
+    }, []);
+
     return (
         <div className="flex flex-col min-h-screen">
             {/* Hero Section */}
@@ -71,20 +103,16 @@ export default function CompanyPage() {
                                 Leadership Team
                             </h2>
                             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-6">
-                                {[
-                                    { name: "Benjamin Hippler", role: "CEO & Founder", img: '/Company/ben.png' },
-                                    { name: "Muhammad Irtiza", role: "CTO & Co-Founder", img: '/Company/irtiza.png' },
-
-                                ].map((leader, i) => (
+                                {team.map((leader, i) => (
                                     <motion.div
-                                        key={leader.name}
+                                        key={leader.id}
                                         className="flex items-center lg:items-start gap-4 p-4 rounded-xl border border-border bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                                         initial={{ opacity: 0, y: 10 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: i * 0.1 }}
                                     >
-                                        <img alt={leader.name} className="w-16 h-16 rounded-lg object-cover grayscale hover:grayscale-0 transition-all" src={leader.img} />
+                                        <img alt={leader.name} className="w-16 h-16 rounded-lg object-cover grayscale hover:grayscale-0 transition-all" src={leader.image} />
                                         <div>
                                             <h3 className="font-bold text-foreground">{leader.name}</h3>
                                             <p className="text-sm text-slate-500 font-medium">{leader.role}</p>

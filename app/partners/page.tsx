@@ -4,8 +4,48 @@ import { Button } from "@/components/ui/button";
 import { Lightbulb, Handshake, Headphones, DollarSign, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+interface PartnerBenefit {
+    id: string;
+    title: string;
+    description: string;
+    icon: string;
+}
+
+const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+    Lightbulb,
+    Handshake,
+    Headphones,
+    DollarSign,
+};
+
+const DEFAULT_BENEFITS: PartnerBenefit[] = [
+    { id: "1", title: "Access to Technology", description: "Exclusive access to our AI Agent core, roadmap updates, and beta features.", icon: "Lightbulb" },
+    { id: "2", title: "Co-Marketing Opportunities", description: "Joint webinars, case studies, and featuring in our global partner directory.", icon: "Handshake" },
+    { id: "3", title: "Dedicated Support", description: "Priority technical support and a dedicated channel for solution architecture.", icon: "Headphones" },
+    { id: "4", title: "Revenue Share", description: "Competitive referral fees and co-sell incentives to grow your bottom line.", icon: "DollarSign" },
+];
 
 export default function PartnersPage() {
+    const [benefits, setBenefits] = useState<PartnerBenefit[]>(DEFAULT_BENEFITS);
+
+    useEffect(() => {
+        async function fetchBenefits() {
+            try {
+                const res = await fetch("/api/public/partners");
+                if (res.ok) {
+                    const data = await res.json();
+                    setBenefits(data); // Always use API data, even if empty
+                }
+            } catch (error) {
+                console.error("Failed to fetch partner benefits:", error);
+                // Keep DEFAULT_BENEFITS only on fetch failure
+            }
+        }
+        fetchBenefits();
+    }, []);
+
     return (
         <div className="flex flex-col min-h-screen">
             {/* Hero */}
@@ -76,27 +116,25 @@ export default function PartnersPage() {
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {[
-                            { title: "Access to Technology", desc: "Exclusive access to our AI Agent core, roadmap updates, and beta features.", icon: Lightbulb, color: "text-yellow-500 bg-yellow-50 dark:bg-yellow-900/20" },
-                            { title: "Co-Marketing Opportunities", desc: "Joint webinars, case studies, and featuring in our global partner directory.", icon: Handshake, color: "text-blue-500 bg-blue-50 dark:bg-blue-900/20" },
-                            { title: "Dedicated Support", desc: "Priority technical support and a dedicated channel for solution architecture.", icon: Headphones, color: "text-purple-500 bg-purple-50 dark:bg-purple-900/20" },
-                            { title: "Revenue Share", desc: "Competitive referral fees and co-sell incentives to grow your bottom line.", icon: DollarSign, color: "text-emerald-500 bg-emerald-50 dark:bg-emerald-900/20" },
-                        ].map((item, idx) => (
-                            <motion.div
-                                key={item.title}
-                                className="p-8 rounded-2xl border border-border bg-white dark:bg-slate-900 hover:shadow-xl transition-all hover:-translate-y-1 group"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: idx * 0.1 }}
-                                viewport={{ once: true }}
-                            >
-                                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform`}>
-                                    <item.icon className="w-7 h-7" />
-                                </div>
-                                <h3 className="text-xl font-bold mb-3 text-foreground">{item.title}</h3>
-                                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">{item.desc}</p>
-                            </motion.div>
-                        ))}
+                        {benefits.map((item, idx) => {
+                            const IconComponent = ICON_MAP[item.icon] || Lightbulb;
+                            return (
+                                <motion.div
+                                    key={item.id}
+                                    className="p-8 rounded-2xl border border-border bg-white dark:bg-slate-900 hover:shadow-xl transition-all hover:-translate-y-1 group"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    viewport={{ once: true }}
+                                >
+                                    <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+                                        <IconComponent className="w-7 h-7" />
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-3 text-foreground">{item.title}</h3>
+                                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">{item.description}</p>
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>

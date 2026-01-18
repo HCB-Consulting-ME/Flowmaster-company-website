@@ -24,6 +24,11 @@ import {
 } from "@/components/ui/sheet";
 import Image from "next/image";
 
+interface SiteSettings {
+    logoImage: string;
+    companyName: string;
+}
+
 const routes = [
     { label: "Platform", href: "/platform" },
     { label: "Solutions", href: "/solutions" },
@@ -58,7 +63,29 @@ const routes = [
 export function Navbar() {
     const [isScrolled, setIsScrolled] = React.useState(false);
     const [isOpen, setIsOpen] = React.useState(false);
+    const [settings, setSettings] = React.useState<SiteSettings>({
+        logoImage: "/Logo/newLogo.png",
+        companyName: "FlowMaster",
+    });
     const pathname = usePathname();
+
+    React.useEffect(() => {
+        const fetchSettings = async () => {
+            try {
+                const res = await fetch("/api/public/settings");
+                if (res.ok) {
+                    const data = await res.json();
+                    setSettings({
+                        logoImage: data.logoImage || "/Logo/newLogo.png",
+                        companyName: data.companyName || "FlowMaster",
+                    });
+                }
+            } catch (error) {
+                console.error("Failed to fetch settings:", error);
+            }
+        };
+        fetchSettings();
+    }, []);
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -79,7 +106,7 @@ export function Navbar() {
         >
             <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <Link href="/" className="hover:opacity-90 transition-opacity">
-                    <Image src="/Logo/newLogo.png" alt="Flowmaster Logo" width={180} height={40} priority />
+                    <Image src={settings.logoImage} alt={`${settings.companyName} Logo`} width={180} height={40} priority />
                 </Link>
 
                 {/* Desktop Navigation */}

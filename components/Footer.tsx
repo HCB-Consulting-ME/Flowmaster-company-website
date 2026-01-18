@@ -1,42 +1,57 @@
 "use client";
 
 import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
+import { useEffect, useState } from "react";
+
+interface SiteSettings {
+    companyName: string;
+    copyrightYear: string;
+    contactEmail: string;
+}
 
 export default function Footer() {
+    const [settings, setSettings] = useState<SiteSettings>({
+        companyName: "FlowMaster FZC LLC",
+        copyrightYear: "2026",
+        contactEmail: "contact@flow-master.ai",
+    });
+
+    useEffect(() => {
+        const fetchSettings = async () => {
+            try {
+                const res = await fetch("/api/public/settings");
+                if (res.ok) {
+                    const data = await res.json();
+                    setSettings({
+                        companyName: data.companyName || "FlowMaster FZC LLC",
+                        copyrightYear: data.copyrightYear || "2026",
+                        contactEmail: data.contactEmail || "contact@flow-master.ai",
+                    });
+                }
+            } catch (error) {
+                console.error("Failed to fetch settings:", error);
+            }
+        };
+        fetchSettings();
+    }, []);
+
+    // Extract short company name for "About X" heading
+    const shortName = settings.companyName.split(" ")[0] || "FlowMaster";
+
     return (
         <footer className="hero-gradient text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#1e293b_0%,#020617_100%)]"></div>
             <div className="mx-auto max-w-7xl px-6 py-16 relative z-10">
-
-                {/* Branding Header Section */}
-                {/* <div className="flex flex-col md:flex-row items-center gap-6">
-                    <Image
-                        src="/Logo/newLogo.png"
-                        alt="Company Logo"
-                        width={230}
-                        height={230}
-                        priority
-                        className="object-contain"
-                    />
-                    <div className="hidden md:block h-10 w-[1px] bg-white/30" />
-                    <h2 className="text-xl md:text-2xl font-medium tracking-tight text-center md:text-left">
-                        The Operating System for AI Native Enterprises
-                    </h2>
-                </div> */}
-
-                {/* Divider */}
-                {/* <Separator className="my-5 mb-10 bg-white/20" /> */}
 
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-8 text-left">
 
                     {/* Description */}
                     <div className="space-y-4">
                         <h4 className="text-lg font-semibold text-white uppercase">
-                            About FlowMaster
+                            About {shortName}
                         </h4>
                         <p className="text-sm text-white/80">
-                            FlowMaster enables enterprises to execute existing business processes using AI. It provides a single end-to-end orchestration and execution layer across current systems and data landscapes, with human oversight where required.
+                            {shortName} enables enterprises to execute existing business processes using AI. It provides a single end-to-end orchestration and execution layer across current systems and data landscapes, with human oversight where required.
                         </p>
                     </div>
 
@@ -100,28 +115,14 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="mailto:contact@flow-master.ai" className="hover:text-white transition-colors">
-                                    contact@flow-master.ai
+                                <Link href={`mailto:${settings.contactEmail}`} className="hover:text-white transition-colors">
+                                    {settings.contactEmail}
                                 </Link>
                             </li>
-                            <li>© 2026 FlowMaster FZC LLC</li>
+                            <li>© {settings.copyrightYear} {settings.companyName}</li>
                         </ul>
                     </div>
                 </div>
-
-                {/*                 <Separator className="my-10 bg-white/20" />
-
-                <div className="flex flex-col items-center justify-between gap-4 text-xs md:flex-row text-white/70">
-                    <p>All rights reserved. Built for the future of automation.</p>
-                    <div className="flex gap-6">
-                        <Link href="/privacy" className="hover:text-white transition-colors">
-                            Privacy Policy
-                        </Link>
-                        <Link href="/terms" className="hover:text-white transition-colors">
-                            Terms of Service
-                        </Link>
-                    </div>
-                </div> */}
             </div>
         </footer>
     );

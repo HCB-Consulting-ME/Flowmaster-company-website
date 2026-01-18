@@ -1,0 +1,286 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// ============================================
+// AUTHENTICATION
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  password      String
+  role          String    @default("editor") // admin, editor, viewer
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// ============================================
+// SITE SETTINGS
+// ============================================
+
+model SiteSettings {
+  id                String   @id @default("main")
+  companyName       String   @default("FlowMaster FZC LLC")
+  copyrightYear     String   @default("2026")
+  contactEmail      String   @default("contact@flow-master.ai")
+  careersEmail      String   @default("careers@flow-master.ai")
+  siteTitle         String   @default("FlowMaster | Enterprise-Ready AI Agents")
+  siteDescription   String   @default("The Platform for Enterprise-Ready AI Agents.")
+  siteUrl           String   @default("https://flow-master.ai")
+  ogImage           String   @default("/Logo/image.png")
+  favicon           String   @default("/Logo/logoicon2.png")
+  logoImage         String   @default("/Logo/newLogo.png")
+  updatedAt         DateTime @updatedAt
+}
+
+// ============================================
+// PAGE CONTENT
+// ============================================
+
+model PageContent {
+  id          String   @id @default(cuid())
+  pageSlug    String   @unique // home, platform, pricing, solutions, careers, company, partners, contact
+  heroTitle   String
+  heroSubtitle String
+  content     String   // JSON string for additional page-specific content
+  metaTitle   String?
+  metaDescription String?
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// FEATURES (Homepage)
+// ============================================
+
+model Feature {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  icon        String   // Icon name from lucide-react
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// CHALLENGE & SOLUTION ITEMS (Homepage)
+// ============================================
+
+model ChallengeItem {
+  id          String   @id @default(cuid())
+  text        String
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SolutionItem {
+  id          String   @id @default(cuid())
+  text        String
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// TEAM MEMBERS
+// ============================================
+
+model TeamMember {
+  id          String   @id @default(cuid())
+  name        String
+  role        String
+  image       String
+  linkedIn    String?
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// JOB LISTINGS
+// ============================================
+
+model JobListing {
+  id          String   @id @default(cuid())
+  title       String
+  department  String
+  location    String
+  description String
+  scope       String   // JSON array of scope items
+  skills      String   // JSON array of skills
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// OFFICE LOCATIONS
+// ============================================
+
+model OfficeLocation {
+  id            String   @id @default(cuid())
+  name          String   // e.g., "Head Office"
+  city          String
+  country       String
+  countryCode   String   @default("") // e.g., "UAE", "PK", "DE"
+  address       String?
+  latitude      Float?
+  longitude     Float?
+  phone         String?
+  email         String?
+  isHeadquarters Boolean @default(false)
+  order         Int      @default(0)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ============================================
+// SOLUTIONS (By Industry)
+// ============================================
+
+model Industry {
+  id          String     @id @default(cuid())
+  name        String
+  slug        String     @unique
+  icon        String     // Icon name
+  order       Int        @default(0)
+  isActive    Boolean    @default(true)
+  solutions   Solution[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Solution {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  icon        String   // Icon name
+  industryId  String
+  industry    Industry @relation(fields: [industryId], references: [id], onDelete: Cascade)
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// PRICING PLANS
+// ============================================
+
+model PricingPlan {
+  id          String   @id @default(cuid())
+  name        String   // e.g., "Free", "Enterprise"
+  subtitle    String?
+  price       String   // e.g., "$99/month" or "Custom"
+  period      String?  // e.g., "month", "year"
+  badge       String?  // e.g., "Current Plan", "Recommended"
+  features    String   // JSON array of features
+  specs       String?  // JSON array of specs (for Free tier table)
+  ctaText     String?
+  ctaLink     String?
+  isPopular   Boolean  @default(false)
+  isHighlighted Boolean @default(false)
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// NAVIGATION MENU
+// ============================================
+
+model MenuItem {
+  id          String     @id @default(cuid())
+  label       String
+  href        String?
+  description String?
+  parentId    String?
+  parent      MenuItem?  @relation("MenuChildren", fields: [parentId], references: [id])
+  children    MenuItem[] @relation("MenuChildren")
+  order       Int        @default(0)
+  isActive    Boolean    @default(true)
+  location    String     @default("header") // header, footer-company, footer-solutions, footer-contact
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+// ============================================
+// CULTURE VALUES (Careers Page)
+// ============================================
+
+model CultureValue {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  icon        String
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// PARTNER BENEFITS
+// ============================================
+
+model PartnerBenefit {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  icon        String
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// PLATFORM TIMELINE STEPS
+// ============================================
+
+model TimelineStep {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  role        String
+  icon        String
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// MEDIA LIBRARY
+// ============================================
+
+model Media {
+  id          String   @id @default(cuid())
+  filename    String
+  originalName String
+  mimeType    String
+  size        Int
+  path        String
+  alt         String?
+  category    String?  // logo, team, hero, screenshot, technology, video
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

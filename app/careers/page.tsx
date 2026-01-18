@@ -1,38 +1,61 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Lightbulb, Users, Zap, TrendingUp, MapPin, Briefcase, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { ApplyModal } from "./_components/ApplyModal";
 
-const jobs = [
+interface Job {
+    id: string;
+    title: string;
+    department: string;
+    location: string;
+    description: string;
+    scope: string[];
+    skills: string[];
+}
+
+const DEFAULT_JOBS: Job[] = [
     {
+        id: "ai-engineering-architect",
         title: "AI Engineering Architect",
-        dept: "Product & Engineering",
+        department: "Product & Engineering",
         location: "Karachi, Pakistan",
-        description: "The AI Engineering Architect designs and builds the AI-native SDLC toolset used by software developers. The role owns the full software lifecycle — from requirements and solution design through coding, testing, deployment, and operation. We develop with Claude Code.",
+        description: "The AI Engineering Architect designs and builds the AI-native SDLC toolset that powers FlowMaster's automated software delivery capabilities.",
         scope: [
             "Requirements intake and decomposition",
             "Architecture and design workflows",
-            "AI-assisted coding, testing, and review",
-            "CI/CD, deployment, and application operations",
-            "Build and maintain the developer toolset (Claude Code workflows, MCPs, Skills, Hooks, slash-commands) and prompts",
-            "E2E integration and automation of the SDLC across stages into a single, traceable workflow",
-            "Define and enforce standards through tooling, not documentation",
-            "Ensure adoption of the toolset (incl training and communication)"
+            "Spec-based code generation and iteration",
+            "Testing, review, and quality assurance loops",
+            "Deployment and release automation",
         ],
         skills: [
             "Expert level experience with Claude Code (non-negotiable), MCPs, Skills, prompting",
-            "End-to-End understanding of the SDLC from requirements to maintenance and beyond",
-            "Solid experience in SW-Architecture, Testing and CI/CD"
+            "8+ years of experience as an architect within enterprise software architecture",
         ]
     },
-
 ];
 
 export default function CareersPage() {
-    const [selectedJob, setSelectedJob] = useState<typeof jobs[0] | null>(null);
+    const [jobs, setJobs] = useState<Job[]>(DEFAULT_JOBS);
+    const [selectedJob, setSelectedJob] = useState<Job | null>(null);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+    useEffect(() => {
+        async function fetchJobs() {
+            try {
+                const res = await fetch("/api/public/jobs");
+                if (res.ok) {
+                    const data = await res.json();
+                    setJobs(data); // Always use API data, even if empty
+                }
+            } catch (error) {
+                console.error("Failed to fetch jobs:", error);
+                // Keep DEFAULT_JOBS only on fetch failure
+            }
+        }
+        fetchJobs();
+    }, []);
 
     const handleApplyClick = (job: typeof jobs[0]) => {
         setSelectedJob(job);
@@ -165,7 +188,7 @@ export default function CareersPage() {
                                     </div>
                                     <div className="flex items-center text-slate-500 dark:text-slate-400">
                                         <Briefcase className="w-5 h-5 mr-2" />
-                                        <span>{job.dept}</span>
+                                        <span>{job.department}</span>
                                     </div>
                                 </div>
                                 <Button

@@ -10,8 +10,9 @@ import { Button } from "@/components/ui/button";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
 interface Job {
+    id: string;
     title: string;
-    dept: string;
+    department: string;
     location: string;
     description: string;
     scope: string[];
@@ -61,7 +62,7 @@ export const ApplyModal = ({ open, onOpenChange, job }: ApplyModalProps) => {
                 <DialogHeader>
                     <DialogTitle className="text-2xl font-bold text-foreground">{job.title}</DialogTitle>
                     <DialogDescription className="text-base text-slate-500">
-                        {job.dept} • {job.location}
+                        {job.department} • {job.location}
                     </DialogDescription>
                 </DialogHeader>
 
